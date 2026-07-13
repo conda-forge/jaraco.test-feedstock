@@ -1,5 +1,5 @@
 {% set name = "jaraco.test" %}
-{% set version = "5.6.0" %}
+{% set version = "5.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/jaraco_test-{{ version }}.tar.gz
-  sha256: f9fb6e3f1c3410958fc57134fc0f25152eb28e3c0116ffdc7a383e5939b6367a
+  sha256: dd4e17584be825986d6938518346b23bbb984b81f0bbb84e5c656fba61a63054
 
 build:
   noarch: python
