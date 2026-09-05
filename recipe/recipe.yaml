@@ -1,0 +1,47 @@
+schema_version: 1
+
+context:
+  name: jaraco.test
+  version: "5.7.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/jaraco_test-${{ version }}.tar.gz
+  sha256: dd4e17584be825986d6938518346b23bbb984b81f0bbb84e5c656fba61a63054
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - setuptools >=56
+    - setuptools-scm >=3.4.1
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - jaraco.functools
+    - jaraco.context
+    - jaraco.collections
+
+tests:
+  - python:
+      imports:
+        - jaraco.test
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: Testing support by jaraco
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/jaraco/jaraco.test
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
